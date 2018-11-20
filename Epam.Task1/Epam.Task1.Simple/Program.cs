@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Epam.Task1.Simple
 {
-    class Program
+    public class Program
     {
-        public static bool Simple(int n)
+        private static bool Simple(int n)
         {
             bool res = true;
-            for (int i = 2; i < n; i++)
+            for (int i = 2; i < Math.Sqrt(n); i++)
             {
                 if (n % i == 0)
                 {
@@ -21,11 +21,25 @@ namespace Epam.Task1.Simple
             }
             return res;
         }
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Is 37 simple number? " + Simple(37));
-            Console.WriteLine("Is 35 simple number? " + Simple(35));
-            Console.ReadKey();
+            Console.WriteLine("Checking the number for simplicity\n");
+            Console.Write("Enter a positive number = ");
+            string value = Console.ReadLine();
+
+            bool success = Int32.TryParse(value, out int number);
+            if (success)
+            {
+                if (number > 0)
+                    Console.WriteLine($"\nIs {number} a simple number? - " + Simple(number));
+                else
+                    Console.WriteLine("You entered an unpositive number {0}.", number);
+            }
+            else
+            {
+                Console.WriteLine("Unable to parse '{0}'.", value);
+            }
         }
     }
 }
