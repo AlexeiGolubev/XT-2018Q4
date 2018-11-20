@@ -43,9 +43,13 @@ namespace Epam.Task1.Square
             if (success)
             {
                 if(number > 0)
+                {
                     Stars(number);
+                }
                 else
+                {
                     Console.WriteLine("You entered an unpositive number {0}.", number);
+                }
             }
             else
             {

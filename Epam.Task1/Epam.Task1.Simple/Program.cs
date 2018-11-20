@@ -10,16 +10,16 @@ namespace Epam.Task1.Simple
     {
         private static bool Simple(int n)
         {
-            bool res = true;
+            bool result = true;
             for (int i = 2; i < Math.Sqrt(n); i++)
             {
                 if (n % i == 0)
                 {
-                    res = false;
+                    result = false;
                     break;
                 }
             }
-            return res;
+            return result;
         }
 
         private static void Main(string[] args)
@@ -32,9 +32,13 @@ namespace Epam.Task1.Simple
             if (success)
             {
                 if (number > 0)
+                {
                     Console.WriteLine($"\nIs {number} a simple number? - " + Simple(number));
+                }
                 else
+                {
                     Console.WriteLine("You entered an unpositive number {0}.", number);
+                }
             }
             else
             {

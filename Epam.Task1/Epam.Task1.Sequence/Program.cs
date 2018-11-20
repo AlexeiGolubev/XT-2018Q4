@@ -29,9 +29,13 @@ namespace Epam.Task1.Sequence
             if (success)
             {
                 if (number > 0)
+                {
                     Console.WriteLine(NumberString(number));
+                }
                 else
+                {
                     Console.WriteLine("You entered an unpositive number {0}.", number);
+                }
             }
             else
             {
