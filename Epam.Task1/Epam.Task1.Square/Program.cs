@@ -8,52 +8,62 @@ namespace Epam.Task1.Square
 {
     public class Program
     {
-        private static void Stars(int n)
+        public static bool IsOdd(int number)
+            => number % 2 == 1;
+
+        public static void Stars(int number)
         {
-            if (n % 2 == 1)
+            const string As = "*";
+            const string Space = " ";
+
+            if (IsOdd(number))
             {
                 Console.WriteLine();
-                for (int i = 1; i <= n; i++)
+                for (int i = 1; i <= number; i++)
                 {
-                    for (int j = 1; j <= n; j++)
+                    for (int j = 1; j <= number; j++)
                     {
-                        if (i != (n / 2 + 1) || j != (n / 2 + 1))
+                        if (i != ((number / 2) + 1) || j != ((number / 2) + 1))
                         {
-                            Console.Write("*");
+                            Console.Write(As);
                         }
                         else
                         {
-                            Console.Write(" ");
+                            Console.Write(Space);
                         }
                     }
+
                     Console.WriteLine();
                 }
             }
             else
-                Console.WriteLine("You entered an even number {0}", n);
+            {
+                Console.WriteLine($"You entered an even number {number}");
+            }
         }
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Drawing stars\n");
+            Console.WriteLine($"Drawing stars");
             Console.Write("Enter a positive odd number = ");
-            string value = Console.ReadLine();
 
-            bool success = Int32.TryParse(value, out int number);
+            string value = Console.ReadLine();
+            bool success = int.TryParse(value, out int number);
+
             if (success)
             {
-                if(number > 0)
+                if (number > 0)
                 {
                     Stars(number);
                 }
                 else
                 {
-                    Console.WriteLine("You entered an unpositive number {0}.", number);
+                    Console.WriteLine($"You entered an unpositive number {value}.");
                 }
             }
             else
             {
-                Console.WriteLine("Unable to parse '{0}'.", value);
+                Console.WriteLine($"Unable to parse '{value}'.");
             }
         }
     }

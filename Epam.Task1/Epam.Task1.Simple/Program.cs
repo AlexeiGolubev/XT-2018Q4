@@ -8,41 +8,45 @@ namespace Epam.Task1.Simple
 {
     public class Program
     {
-        private static bool Simple(int n)
+        public static bool CheckSimpleNumber(int number)
         {
             bool result = true;
-            for (int i = 2; i < Math.Sqrt(n); i++)
+            for (int i = 2; i < Math.Sqrt(number); i++)
             {
-                if (n % i == 0)
+                if (number % i == 0)
                 {
                     result = false;
                     break;
                 }
             }
+
             return result;
         }
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Checking the number for simplicity\n");
+            Console.WriteLine("Checking the number for simplicity");
             Console.Write("Enter a positive number = ");
-            string value = Console.ReadLine();
 
-            bool success = Int32.TryParse(value, out int number);
+            string value = Console.ReadLine();
+            bool success = int.TryParse(value, out int number);
+
             if (success)
             {
                 if (number > 0)
                 {
-                    Console.WriteLine($"\nIs {number} a simple number? - " + Simple(number));
+                    bool result = CheckSimpleNumber(number);
+                    Console.WriteLine();
+                    Console.WriteLine($"Is {value} a simple number? - {result}");
                 }
                 else
                 {
-                    Console.WriteLine("You entered an unpositive number {0}.", number);
+                    Console.WriteLine($"You entered an unpositive number {value}.");
                 }
             }
             else
             {
-                Console.WriteLine("Unable to parse '{0}'.", value);
+                Console.WriteLine($"Unable to parse '{value}'.");
             }
         }
     }

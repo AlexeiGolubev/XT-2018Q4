@@ -8,24 +8,28 @@ namespace Epam.Task1.Sequence
 {
     public class Program
     {
-        private static string NumberString(int n)
+        public static string NumberString(int number)
         {
+            const string Comma = ", ";
             StringBuilder str = new StringBuilder();
-            for (int i = 1; i < n; i++)
+
+            for (int i = 1; i < number; i++)
             {
-                str.Append(i + ", ");
+                str.Append(i + Comma);
             }
-            str.Append(n);
+
+            str.Append(number);
             return str.ToString();
         }
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Output a sequence of numbers\n");
+            Console.WriteLine("Output a sequence of numbers");
             Console.Write("Enter a positive number = ");
-            string value = Console.ReadLine();
 
-            bool success = Int32.TryParse(value, out int number);
+            string value = Console.ReadLine();
+            bool success = int.TryParse(value, out int number);
+
             if (success)
             {
                 if (number > 0)
@@ -34,12 +38,12 @@ namespace Epam.Task1.Sequence
                 }
                 else
                 {
-                    Console.WriteLine("You entered an unpositive number {0}.", number);
+                    Console.WriteLine($"You entered an unpositive number {value}.");
                 }
             }
             else
             {
-                Console.WriteLine("Unable to parse '{0}'.", value);
+                Console.WriteLine($"Unable to parse '{value}'.");
             }
         }
     }
