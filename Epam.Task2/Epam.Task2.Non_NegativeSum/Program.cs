@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace Epam.Task2.Non_NegativeSum
 {
-    //Task 1.9
-    //Написать программу, которая определяет сумму неотрицательных элементов в одномерном
-    //массиве.Число элементов в массиве и их тип определяются разработчиком.
     public class Program
     {
         public static void GenerateArray(out int[] array)
         {
-            const int arrayLength = 10;
-            array = new int[arrayLength];
+            const int ArrayLength = 10;
+            array = new int[ArrayLength];
             int limit = 10;
 
             Random random = new Random();
@@ -30,20 +27,22 @@ namespace Epam.Task2.Non_NegativeSum
             {
                 Console.Write($"{item} ");
             }
+
             Console.WriteLine();
         }
 
-        public static int GetNonNegativeSum(int [] array)
+        public static int GetNonNegativeSum(int[] array)
         {
             int sum = 0;
 
             foreach (int item in array)
             {
-                if(item > 0)
+                if (item > 0)
                 {
                     sum += item;
                 }
             }
+
             return sum;
         }
 

@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace Epam.Task2.AverageStringLength
 {
-    //Task 1.11
-    //Написать программу, которая определяет среднюю длину слова во введённой текстовой строке.
-    //Учесть, что символы пунктуации на длину слов влиять не должны.Регулярные выражения не
-    //использовать.И не пытайтесь прописать все символы-разделители ручками. Используйте
-    //стандартные методы классов String и Char.
     public class Program
     {
         public static float GetAverageStringLength(string str)
@@ -18,6 +13,7 @@ namespace Epam.Task2.AverageStringLength
             int sumWordLength = 0;
             int wordsCounter = 0;
             bool isWord = false;
+
             for (int i = 0; i < str.Length; i++)
             {
                 if (char.IsSeparator(str[i]))

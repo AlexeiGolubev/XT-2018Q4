@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Epam.Task2.NoPositive
 {
-    //Task 1.8
-    //Написать программу, которая заменяет все положительные элементы в трёхмерном массиве на
-    //нули.Число элементов в массиве и их тип определяются разработчиком.
     public class Program
     {
         public static void Generate3DArray(out int[,,] array3d)
         {
             Random random = new Random();
-            const int size = 3;
+            const int Size = 3;
             int limit = 10;
-            array3d = new int[size, size, size];
+            array3d = new int[Size, Size, Size];
+
             for (int i = 0; i < array3d.GetLength(0); i++)
             {
                 for (int j = 0; j < array3d.GetLength(1); j++)
@@ -37,7 +35,10 @@ namespace Epam.Task2.NoPositive
                 {
                     for (int k = 0; k < array3d.GetLength(2); k++)
                     {
-                        if (array3d[i, j, k] > 0) array3d[i, j, k] = 0;
+                        if (array3d[i, j, k] > 0)
+                        {
+                            array3d[i, j, k] = 0;
+                        }
                     }
                 }
             }
@@ -54,8 +55,10 @@ namespace Epam.Task2.NoPositive
                     {
                         Console.Write(array3d[i, j, k] + " ");
                     }
+
                     Console.WriteLine();
                 }
+
                 Console.WriteLine();
             }
         }

@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace _2DArray
 {
-    //Task 1.10
-    //Элемент двумерного массива считается стоящим на чётной позиции, если сумма номеров его
-    //позиций по обеим размерностям является чётным числом(например, [1,1] — чётная позиция, а
-    //[1, 2] — нет). Определить сумму элементов массива, стоящих на чётных позициях.
     public class Program
     {
         public static void Generate2DArray(out int[,] array2d)
         {
             Random random = new Random();
-            const int arrayLength = 3;
+            const int ArrayLength = 3;
             int limit = 10;
-            array2d = new int[arrayLength, arrayLength];
+            array2d = new int[ArrayLength, ArrayLength];
+
             for (int i = 0; i < array2d.GetLength(0); i++)
             {
                 for (int j = 0; j < array2d.GetLength(1); j++)
@@ -37,6 +34,7 @@ namespace _2DArray
                     sum += array[i, j];
                 }
             }
+
             return sum;
         }
 

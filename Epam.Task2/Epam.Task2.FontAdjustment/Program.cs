@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace Epam.Task2.FontAdjustment
 {
-    //Task 1.6
-    //Для форматирования текста надписи можно использовать различные начертания: полужирное,
-    //курсивное и подчёркнутое, а также их сочетания.Предложите способ хранения информации о
-    //форматировании текста надписи и напишите программу, которая позволяет устанавливать и
-    //изменять начертание.
     public class Program
     {
         [Flags]
@@ -26,27 +21,35 @@ namespace Epam.Task2.FontAdjustment
         {
             TextStyle currentStyle = TextStyle.None;
             Console.ForegroundColor = ConsoleColor.Green;
+
             while (true)
             {
-                Console.WriteLine($"The changing text style.{ Environment.NewLine + Environment.NewLine}" +
-                    $"Enter a menu item or another character to exit.{Environment.NewLine}" +
-                    $"Style parameters: {currentStyle}{Environment.NewLine}\t1.Bold" +
-                    $"{Environment.NewLine}\t2.Italic{Environment.NewLine}\t3.Underline");
+                Console.WriteLine("The changing text style.");
+                Console.WriteLine();
+                Console.WriteLine("Enter a menu item or another character to exit.");
+                Console.WriteLine($"Style parameters: {currentStyle}");
+                Console.WriteLine("\t1.Bold");
+                Console.WriteLine("\t2.Italic");
+                Console.WriteLine("\t3.Underline");
 
-                if (int.TryParse(Console.ReadLine(), out int n) && n <= 3 && n > 0)
+                string value = Console.ReadLine();
+                bool success = int.TryParse(value, out int number);
+
+                if (success && number <= 3 && number > 0)
                 {
-                    if (n == 3)
+                    if (number == 3)
                     {
-                        n = 4;
+                        number = 4;
                     }
-                    currentStyle ^= (TextStyle)n;
-                    Console.WriteLine(currentStyle);
+
+                    currentStyle ^= (TextStyle)number;
                 }
                 else
                 {
                     Console.WriteLine("Incorrect input or exit.");
                     break;
                 }
+
                 Console.Clear();
             }
         }
