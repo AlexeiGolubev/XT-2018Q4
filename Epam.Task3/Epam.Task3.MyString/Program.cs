@@ -22,7 +22,7 @@ namespace Epam.Task3.MyString
             Console.WriteLine("Function 'GetHashCode' with first string: " + firstMyString.GetHashCode());
             Console.WriteLine("Function 'ToStringBuilder' with first string: " + firstMyString.ToStringBuilder());
             Console.WriteLine("Function 'ToCharArray' with first string: " + firstMyString.ToCharArray());
-            Console.WriteLine("Function 'IndexOf' with first string with 'b' character: " + firstMyString.IndexOf('b'));
+            Console.WriteLine("Function 'IndexOf' with first string with 'c' character: " + firstMyString.IndexOf('c'));
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Epam.Task3.MyString
         public static MyString operator +(MyString firstMyString, MyString secondMyString)
         {
             char[] characters = new char[firstMyString.Length + secondMyString.Length];
-            for (int i = 0; i < firstMyString.characters.Length; i++)
+            for (int i = 0; i < firstMyString.Length; i++)
             {
                 characters[i] = firstMyString[i];
             }
@@ -75,7 +75,7 @@ namespace Epam.Task3.MyString
         public MyString Concat(MyString myString)
         {
             char[] characters = new char[this.Length + myString.Length];
-            for (int i = 0; i < this.characters.Length; i++)
+            for (int i = 0; i < this.Length; i++)
             {
                 characters[i] = this[i];
             }
@@ -85,7 +85,7 @@ namespace Epam.Task3.MyString
                 characters[i] = myString[j];
             }
 
-            return new MyString(characters: characters);
+            return new MyString(characters);
         }
 
         public StringBuilder ToStringBuilder()
@@ -103,7 +103,7 @@ namespace Epam.Task3.MyString
         public int IndexOf(char character)
         {
             int index = -1;
-            for (int i = 0; i < this.characters.Length; i++)
+            for (int i = 0; i < this.Length; i++)
             {
                 if (character.Equals(this.characters[i]))
                 {
