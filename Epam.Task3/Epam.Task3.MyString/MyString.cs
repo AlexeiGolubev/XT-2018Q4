@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Epam.Task3.MyString // сравнение, конкатенация, поиск символов, конвертация из/в массив символов
+namespace Epam.Task3.MyString
 {
     public sealed class MyString
     {
