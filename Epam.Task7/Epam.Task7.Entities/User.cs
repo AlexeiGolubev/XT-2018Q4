@@ -8,18 +8,18 @@ namespace Epam.Task7.Entities
 {
     public class User
     {
+        private DateTime dateOfBirth;
+
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        private DateTime dateOfBirth;
 
         public DateTime DateOfBirth
         {
             get => this.dateOfBirth;
             set
             {
-                if ((DateTime.Now.Year - value.Year < 200) && (DateTime.Now.Year - value.Year >= 0))
+                if ((DateTime.Now.Year - value.Year < 150) && (DateTime.Now.Year - value.Year >= 0))
                 {
                     this.dateOfBirth = value;
                 }
