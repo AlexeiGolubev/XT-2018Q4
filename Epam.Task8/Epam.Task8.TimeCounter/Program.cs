@@ -13,8 +13,9 @@ namespace Epam.Task8.TimeCounter
 
         public static void Main(string[] args)
         {
+            Console.WriteLine("The application determines how many times the time is found in the string.");
+            Console.WriteLine();
             Console.WriteLine("Enter string: ");
-
             string input = Console.ReadLine();
             int counter = Regex.Matches(input, TimePattern).Count;
             Console.WriteLine($"There is {counter} time records in the text.");

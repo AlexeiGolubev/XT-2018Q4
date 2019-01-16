@@ -15,6 +15,7 @@ namespace Epam.Task8.NumberValidator
         public static void Main(string[] args)
         {
             Console.WriteLine("The application checks a string for its text format real number and displays the format in which this number is written.");
+            Console.WriteLine();
             Console.WriteLine("Enter number: ");
             string input = Console.ReadLine();
 

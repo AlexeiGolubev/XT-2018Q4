@@ -14,6 +14,7 @@ namespace Epam.Task8.DateExistence
         public static void Main(string[] args)
         {
             Console.WriteLine("The application determines existiting dd-mm-yyyy date in the string.");
+            Console.WriteLine();
             Console.WriteLine("Input string:");
             string inputString = Console.ReadLine();
             bool dateContains = Regex.IsMatch(inputString, DatePattern);

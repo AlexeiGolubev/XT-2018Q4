@@ -9,11 +9,12 @@ namespace Epam.Task8.EmailFinder
 {
     public class Program
     {
-        private const string EmailPattern = @"[A-Za-z0-9][A-Za-z0-9_\-\.]*[A-Za-z0-9][@][A-Za-z0-9][A-Za-z0-9_\-\.]*[A-Za-z0-9][\.]+[A-Za-z]{2,6}";
+        private const string EmailPattern = @"[A-Za-z0-9][A-Za-z0-9_\-\.]*[A-Za-z0-9][@][A-Za-z0-9][A-Za-z0-9\-\]*[A-Za-z0-9][\.]+[A-Za-z]{2,6}";
 
         public static void Main(string[] args)
         {
             Console.WriteLine("The application finds all emails in the string.");
+            Console.WriteLine();
             Console.WriteLine("Input string");
             string input = Console.ReadLine();
             Regex emailRegex = new Regex(EmailPattern);
@@ -21,7 +22,7 @@ namespace Epam.Task8.EmailFinder
 
             if (emailRegex.IsMatch(input))
             {
-                Console.WriteLine("The following email addresses were found in the text:");
+                Console.WriteLine("The following email addresses were found in the string:");
                 foreach (var address in emailRegex.Matches(input))
                 {
                     Console.WriteLine(address);
