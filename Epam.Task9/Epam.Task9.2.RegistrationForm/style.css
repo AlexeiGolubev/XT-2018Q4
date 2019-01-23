@@ -1,0 +1,47 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+form {
+    width: 400px;
+    height: 270px;
+    background-color: #0080FF;
+    border: 2px solid #045FB4;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: 100;
+    margin: 20px;
+}
+form h1 {
+    display: block;
+    border-bottom: 1px solid #fff;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: 100;
+}
+div {
+    display: inline-block;
+    padding-bottom: 15px;
+}
+label {
+    font-size: 16px;
+}
+input, label {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+input[type="email"] {
+    width: 300px;
+}
+input[type="password"] {
+    width: 135px;
+}
+input[type="button"] {
+    background-color: #F3E2A9;
+    width: 80px;
+    height: 25px;
+    border: none;
+    margin-top: 10px;
+}

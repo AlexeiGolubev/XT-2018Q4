@@ -1,0 +1,18 @@
+﻿body {
+    margin: 10px;
+    padding: 0;
+}
+.layer1 {
+    background: #008B66;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: -7px;
+    font-size: 1.1em;
+}
+.layer2 {
+    margin-left: 30px;
+    background: #dfe6e1;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-right: none;
+}

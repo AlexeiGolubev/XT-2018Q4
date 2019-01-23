@@ -1,0 +1,36 @@
+﻿body {
+    background-color: #000;
+}
+.wrapper {
+    font-family: arial;
+    width: 400px;
+    margin: 0 auto;
+    background: linear-gradient(#fff, #DDD);
+    line-height: 1.2em;
+    padding: 50px 10px 10px 10px;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+    background: 10px solid #fff;
+    border: 2px solid #fff;
+}
+
+.wrapper:before {
+    position: absolute;
+    content: "";
+    border-top: 60px solid #000;
+    border-right: 30px solid transparent;
+    height: 0;
+    width: 120px;
+    top: calc(0% - 2px);
+    left: calc(0% - 2px);
+}
+
+.wrapper:after {
+    position: absolute;
+    content: "ЭКГ-5";
+    text-transform: uppercase;
+    color: #FFB163;
+    font-size: 2em;
+    top: 7%;
+    left: 2%
+}

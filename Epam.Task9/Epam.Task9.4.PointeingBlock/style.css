@@ -1,0 +1,27 @@
+﻿body{
+    background: #333333;
+}
+.wrapper{
+    background: #88B7D5;
+    border: 5px solid #C2E1F5;
+    width: 95%;
+    margin: 80px auto;
+    height: 150px;
+    position: relative;
+    color: #ffffff;
+    font-size: 2em;
+    text-align: center;
+    line-height: 150px;
+}
+.wrapper::before{
+    content: "";
+    border-left: 5px solid #C2E1F5;
+    border-top: 5px solid #C2E1F5;
+    background: #88B7D5;
+    width: 76px;
+    height: 76px;
+    position: absolute;
+    top: -44px;
+    left: calc(50% - 38px);
+    transform: rotate(45deg);
+}

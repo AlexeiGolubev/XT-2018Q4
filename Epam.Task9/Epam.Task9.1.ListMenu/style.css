@@ -1,0 +1,28 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none; 
+}
+nav {
+    margin: 10px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 10px; 
+    background-color: #F9E497;
+    color: #880000;
+    box-shadow: 5px 5px 0 0 #880000;
+    float: left;
+}
+
+nav ul{
+    padding: 5px;
+    list-style-type: none;
+}
+nav li{
+    font-size: 0.95em;
+    margin: 5px;
+}
