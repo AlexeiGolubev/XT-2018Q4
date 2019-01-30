@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Math calculator</title>
+    <link rel="stylesheet" href="Styles/style.css">
+</head>
+<body>
+    <section class="wrapper">
+        <article class="optionsField">
+            <h3 class="fieldHeader">Available</h3>
+            <select id="available" size="5", multiple>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+                <option value="5">Option 5</option>
+            </select>
+        </article>
+        <article class="buttons">
+            <button id="allToSelected" class="btn">>></button>
+            <button id="toSelected" class="btn">></button>
+            <button id="toAvailable" class="btn"><</button>
+            <button id="allToAvailable" class="btn"><<</button>
+        </article>
+        <article class="optionsField">
+            <h3 class="fieldHeader">Selected</h3>
+            <select id="selected" size="5", multiple>
+            </select>
+        </article>
+    </section>
+    <script src="Scripts/butterflyControl.js"></script>
+</body>
+</html>
