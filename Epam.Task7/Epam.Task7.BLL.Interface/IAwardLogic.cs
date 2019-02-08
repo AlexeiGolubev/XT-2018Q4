@@ -13,7 +13,7 @@ namespace Epam.Task7.BLL.Interface
 
         void Delete(int id);
 
-        void Update(Award user);
+        void Update(Award award);
 
         Award GetById(int id);
 

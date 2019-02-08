@@ -35,13 +35,13 @@ namespace Epam.Task7.Entities
             get
             {
                 DateTime date = DateTime.Now;
-                if ((date.Month >= this.DateOfBirth.Month) && (date.Day >= this.DateOfBirth.Day))
+                if ((date.Month >= this.DateOfBirth.Month) && (date.Day >= this.DateOfBirth.Day) || (date.Year - this.DateOfBirth.Year == 0))
                 {
-                    return DateTime.Now.Year - this.DateOfBirth.Year;
+                    return date.Year - this.DateOfBirth.Year;
                 }
                 else
                 {
-                    return DateTime.Now.Year - this.DateOfBirth.Year - 1;
+                    return date.Year - this.DateOfBirth.Year - 1;
                 }
             }
         }
