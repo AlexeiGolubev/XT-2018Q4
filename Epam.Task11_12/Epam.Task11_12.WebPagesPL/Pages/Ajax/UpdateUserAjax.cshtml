@@ -1,0 +1,19 @@
+﻿@using Epam.Task7.Entities;
+@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (IsAjax)
+    {
+        int.TryParse(Request.Params["id"], out var id);
+        var name = Request.Params["name"].Trim();
+        var dateOfBirthParse = DateTime.TryParse(Request.Params["dateOfBirth"], out var dateOfBirth);
+
+        if (id > 0 && BLLProvider.userLogic.GetById(id) != null  && name.CheckName() && dateOfBirth.CheckDate())
+        {
+            BLLProvider.userLogic.Update(new User {Id = id, Name = name, DateOfBirth = dateOfBirth });
+            @(1);
+        }
+
+        return;
+    }
+}

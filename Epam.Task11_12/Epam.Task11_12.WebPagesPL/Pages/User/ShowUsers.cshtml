@@ -1,0 +1,23 @@
+﻿@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    Layout = "~/_MainLayout.cshtml";
+    Page.Title = "Show Users";
+    var users = BLLProvider.userLogic.GetAll();
+}
+
+@*@section styles {
+    
+}*@
+
+<section class="content">
+    <h4>Users count: @users.Count()</h4>
+    <ul>
+        @foreach (var user in users)
+        {
+            <li>
+                @RenderPage("/Pages/Partial/_UserInfoPartial.cshtml", new { User = user })
+            </li>
+        }
+    </ul>
+</section>

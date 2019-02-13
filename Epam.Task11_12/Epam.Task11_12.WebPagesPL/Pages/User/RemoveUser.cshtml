@@ -1,0 +1,56 @@
+﻿@{
+    if (!User.IsInRole("admin"))
+    {
+        Response.Redirect("~");
+    }
+
+    Layout = "~/_MainLayout.cshtml";
+    Page.Title = "Remove user";
+}
+
+@*@section styles {
+    
+}*@
+
+@section scripts {
+    <script>
+        $("#form").submit(function () {
+            var error_message = "Cannot to remove user";
+            var success_message = "User successfully removed";
+            var $user_id = $("#user_id");
+            var $result = $("#result");
+            $.ajax({
+                method: "POST",
+                url: "/Pages/Ajax/RemoveUserAjax",
+                data: { id: $user_id.val() },
+                success: function (response) {
+                    if (response == 1) {
+                        $('#form')[0].reset();
+                        $result.text(success_message);
+                    }
+                    else {
+                        $result.text(error_message);
+                    }
+                },
+                error: function (response) { $result.text(error_message); }
+            })
+            return false;
+        });
+    </script>
+}
+
+<section class="content">
+    <div class="form">
+        <form method="post" id="form">
+
+            <div class="option">
+                <label for="user_id">Enter user ID:</label>
+                <input type="number" id="user_id" name="user_id" required />
+            </div>
+
+            <button type="submit" id="submit">Remove</button>
+        </form>
+    </div>
+
+    <div id="result"></div>
+</section>

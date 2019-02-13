@@ -1,0 +1,16 @@
+﻿@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (IsAjax)
+    {
+        int.TryParse(Request.Params["user_id"], out var id);
+
+        if (id > 0 && BLLProvider.userLogic.GetById(id) != null)
+        {
+            BLLProvider.userLogic.Delete(id);
+            @(1);
+        }
+
+        return;
+    }
+}

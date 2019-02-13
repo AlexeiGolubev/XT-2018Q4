@@ -1,0 +1,56 @@
+﻿@{
+    if (!User.IsInRole("admin"))
+    {
+        Response.Redirect("~");
+    }
+
+    Layout = "~/_MainLayout.cshtml";
+    Page.Title = "Add award";
+}
+
+@*@section styles {
+    
+}*@
+
+@section scripts {
+    <script>
+        $("#form").submit(function () {
+            var error_message = "Cannot to add award";
+            var success_message = "Award succefully added";
+            var $title = $("#title");
+            var $result = $("#result");
+            $.ajax({
+                method: "POST",
+                url: "/Pages/Ajax/AddAwardAjax",
+                data: { title: $title.val() },
+                success: function (response) {
+                    if (response == 1) {
+                        $('#form')[0].reset();
+                        $result.text(success_message);
+                    }
+                    else {
+                        $result.text(error_message);
+                    }
+                },
+                error: function (response) { $result.text(error_message); }
+            })
+            return false;
+        });
+    </script>
+}
+
+<section class="content">
+    <div class="form">
+        <form method="post" id="form">
+
+            <div class="option">
+                <label for="title">Enter award title: </label>
+                <input type="text" id="title" name="title" autocomplete="off" required />
+            </div>
+
+            <button type="submit" id="submit">Add</button>
+        </form>
+    </div>
+
+    <div id="result"></div>
+</section>

@@ -1,0 +1,17 @@
+﻿@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (IsAjax)
+    {
+        int.TryParse(Request.Params["award_id"], out var id);
+
+        if (id > 0 && BLLProvider.awardLogic.GetById(id) != null)
+        {
+            BLLProvider.awardLogic.Delete(id);
+            BLLProvider.awardedUsersLogic.DeleteAwardToAllUsers(id);
+            @(1);
+        }
+
+        return;
+    }
+}

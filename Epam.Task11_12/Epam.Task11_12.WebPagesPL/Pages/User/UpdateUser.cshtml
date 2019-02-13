@@ -1,0 +1,72 @@
+﻿@{
+    if (!User.IsInRole("admin"))
+    {
+        Response.Redirect("~");
+    }
+
+    Layout = "~/_MainLayout.cshtml";
+    Page.Title = "Update user";
+}
+
+@*@section styles {
+    
+}*@
+
+@section scripts {
+    <script>
+        $("#form").submit(function () {
+            var error_message = "Cannot to update user";
+            var success_message = "User succefully updated";
+            var $userId = $("#user_id");
+            var $name = $("#name");
+            var $dateOfBirth = $("#dateOfBirth");
+            var $result = $("#result");
+            $.ajax({
+                method: "POST",
+                url: "/Pages/Ajax/UpdateUserAjax",
+                data: {
+                    id: $userId.val(),
+                    name: $name.val(),
+                    dateOfBirth: $dateOfBirth.val(),
+                },
+                success: function (response) {
+                    if (response == 1) {
+                        $('#form')[0].reset();
+                        $result.text(success_message);
+                    }
+                    else {
+                        $result.text(error_message);
+                    }
+                },
+                error: function (response) { $result.text(error_message); }
+            })
+            return false;
+        });
+    </script>
+}
+
+<section class="content">
+    <div class="form">
+        <form method="post" id="form">
+
+            <div class="option">
+                <label for="user_id">Enter user ID:</label>
+                <input type="number" id="user_id" name="user_id" required />
+            </div>
+
+            <div class="option">
+                <label for="name">Enter user name: </label>
+                <input type="text" id="name" name="name" autocomplete="off" required />
+            </div>
+
+            <div class="option">
+                <label for="dateOfBirth">Enter user date of birth: </label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required />
+            </div>
+
+            <button type="submit" id="submit">Update</button>
+        </form>
+    </div>
+
+    <div id="result"></div>
+</section>

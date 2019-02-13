@@ -1,0 +1,28 @@
+﻿@using Epam.Task7.Entities;
+@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    var user = Page.User;
+    IEnumerable<Award> awards = BLLProvider.awardedUsersLogic.GetAwardsByUserId(user.Id, BLLProvider.awardLogic.GetAll());
+}
+
+@*<img src="@WebHelper.GetUserImagePath(user)" class="user_photo" alt="user photo" />*@
+<div class="user_info">
+    <p>@user.ToString()</p>
+
+    @if (User.Identity.IsAuthenticated && awards.Count() > 0)
+    {
+        <h4>User awards count: @awards.Count()</h4>
+        <ul>
+            @foreach (var award in awards)
+            {
+                <li>
+                    @*<img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />*@
+                    <div class="user_info">
+                        <p>@award.Title</p>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+</div>

@@ -1,0 +1,25 @@
+﻿<div class="navigation">
+
+    <hr />
+
+    <span>Users</span>
+    <a href="/Pages/User/ShowUsers">Show users</a>
+    @if (User.IsInRole("admin"))
+    {
+        <a href="/Pages/User/AddUser">Create user</a>
+        <a href="/Pages/User/UpdateUser">Update user</a>
+        <a href="/Pages/User/RemoveUser">Remove user</a>
+        <a href="/Pages/User/GiveAward">Give award</a>
+        <a href="/Pages/User/TakeAward">Take award</a>
+
+        <br /><hr />
+
+        <span>Awards</span>
+        <a href="/Pages/Award/ShowAwards">Show awards</a>
+        <a href="/Pages/Award/AddAward">Create award</a>
+        <a href="/Pages/Award/UpdateAward">Update award</a>
+        <a href="/Pages/Award/RemoveAward">Remove award</a>
+
+        <br /><hr /><br />
+    }
+</div>

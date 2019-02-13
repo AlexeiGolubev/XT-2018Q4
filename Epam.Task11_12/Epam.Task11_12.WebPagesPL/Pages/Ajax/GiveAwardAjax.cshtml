@@ -1,0 +1,24 @@
+﻿@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (IsAjax)
+    {
+        int.TryParse(Request.Params["user_id"], out var userId);
+        int.TryParse(Request.Params["award_id"], out var awardId);
+
+        if (userId > 0 && awardId > 0 && BLLProvider.userLogic.GetById(userId) != null && BLLProvider.awardLogic.GetById(awardId) != null)
+        {
+            try
+            {
+                BLLProvider.awardedUsersLogic.Add(userId, awardId);
+                @(1)
+            }
+            catch (ArgumentException)
+            {
+                @("User already awarded!");
+            }
+        }
+
+        return;
+    }
+}

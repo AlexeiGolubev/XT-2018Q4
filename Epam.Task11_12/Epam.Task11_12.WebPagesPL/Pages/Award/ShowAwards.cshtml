@@ -1,0 +1,32 @@
+﻿@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (!User.IsInRole("admin"))
+    {
+        Response.Redirect("~");
+    }
+
+    Layout = "~/_MainLayout.cshtml";
+    Page.Title = "All awards";
+    var awards = BLLProvider.awardLogic.GetAll();
+}
+
+@*@section styles {
+    
+}*@
+
+<section class="content">
+    <h4>Awards count: @awards.Count()</h4>
+    <ul>
+
+        @foreach (var award in awards)
+        {
+            <li>
+                @*<img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />*@
+                <div class="user_info">
+                    @award.ToString()
+                </div>
+            </li>
+        }
+    </ul>
+</section>

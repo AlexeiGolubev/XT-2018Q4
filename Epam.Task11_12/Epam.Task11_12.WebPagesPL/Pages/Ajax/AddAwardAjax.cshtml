@@ -1,0 +1,17 @@
+﻿@using Epam.Task7.Entities;
+@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (IsAjax)
+    {
+        var title = Request.Params["title"].Trim();
+
+        if (title.CheckTitle())
+        {
+            BLLProvider.awardLogic.Add(new Award { Title = title });
+            @(1)
+        }
+
+        return;
+    }
+}
