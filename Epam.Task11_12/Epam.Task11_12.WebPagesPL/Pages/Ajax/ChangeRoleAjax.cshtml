@@ -1,0 +1,23 @@
+﻿@using Epam.Task7.Entities;
+@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (IsAjax)
+    {
+        var login = Request.Params["account_login"];
+        var role = Request.Params["account_role"];
+        
+        bool IsChangeRole = BLLProvider.accountLogic.ChangeRole(login, role);
+
+        Account account = BLLProvider.accountLogic.GetAccount(login);
+
+        if (IsChangeRole && account != null)
+        {
+            @account.Role;
+        }
+        else
+        {
+            @(0);
+        }
+    }
+}

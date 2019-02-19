@@ -22,7 +22,7 @@
         @foreach (var award in awards)
         {
             <li>
-                @*<img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />*@
+                <img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />
                 <div class="user_info">
                     @award.ToString()
                 </div>

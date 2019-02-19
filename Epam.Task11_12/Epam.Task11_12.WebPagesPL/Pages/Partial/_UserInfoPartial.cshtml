@@ -6,9 +6,9 @@
     IEnumerable<Award> awards = BLLProvider.awardedUsersLogic.GetAwardsByUserId(user.Id, BLLProvider.awardLogic.GetAll());
 }
 
-@*<img src="@WebHelper.GetUserImagePath(user)" class="user_photo" alt="user photo" />*@
+<img src="@WebHelper.GetUserImagePath(user)" class="user_photo" alt="user photo"/>
 <div class="user_info">
-    <p>@user.ToString()</p>
+    <span>@user.ToString()</span>
 
     @if (User.Identity.IsAuthenticated && awards.Count() > 0)
     {
@@ -17,9 +17,9 @@
             @foreach (var award in awards)
             {
                 <li>
-                    @*<img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />*@
+                    <img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />
                     <div class="user_info">
-                        <p>@award.Title</p>
+                        <span>@award.Title</span>
                     </div>
                 </li>
             }

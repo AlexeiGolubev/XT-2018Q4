@@ -41,7 +41,7 @@ namespace Epam.Task7.BLL
             if (cacheResult == null)
             {
                 var result = this.awardedUsersDao.GetAll();
-                this.cacheLogic.Add(AllAwardedUsersCacheKey, this.awardedUsersDao.GetAll());
+                this.cacheLogic.Add(AllAwardedUsersCacheKey, result);
                 return result;
             }
 

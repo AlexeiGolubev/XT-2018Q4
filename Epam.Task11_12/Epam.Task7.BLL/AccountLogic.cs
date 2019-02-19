@@ -46,10 +46,10 @@ namespace Epam.Task7.BLL
             return accountDao.GetRoles(login);
         }
 
-        public bool GiveAdminRights(string login)
+        public bool ChangeRole(string login, string role)
         {
             this.cacheLogic.Delete(AllAccountsCacheKey);
-            return this.accountDao.GiveAdminRights(login);
+            return this.accountDao.ChangeRole(login, role);
         }
 
         public bool Login(string login, string password)
@@ -66,12 +66,6 @@ namespace Epam.Task7.BLL
             }
 
             return false;
-        }
-
-        public bool TakeAdminRights(string login)
-        {
-            this.cacheLogic.Delete(AllAccountsCacheKey);
-            return this.accountDao.TakeAdminRights(login);
         }
 
         private bool IsValidRegistration(string email, string login, string password)

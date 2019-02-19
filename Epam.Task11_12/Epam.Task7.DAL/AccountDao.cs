@@ -45,9 +45,27 @@ namespace Epam.Task7.DAL
                 : null;
         }
 
-        public bool GiveAdminRights(string login)
+        public bool ChangeRole(string login, string role)
         {
-            throw new NotImplementedException();
+            Account account = repoAccounts.FirstOrDefault(u => u.Value.Login== login).Value;
+
+            if (account != null && (role.ToLower() == AdminRole.ToLower() || role.ToLower() == UserRole.ToLower()))
+            {
+                if (account.Role == AdminRole)
+                {
+                    repoAccounts[account.Id].Role = UserRole;
+                }
+                else if (account.Role == UserRole)
+                {
+                    repoAccounts[account.Id].Role = AdminRole;
+                }
+
+                FileHelper.WriteAccountsData(this.repoAccounts);
+
+                return true;
+            }
+
+            return false;
         }
 
         public bool Login(string login, string password)
@@ -87,11 +105,6 @@ namespace Epam.Task7.DAL
             FileHelper.WriteAccountsData(this.repoAccounts);
 
             return true;
-        }
-
-        public bool TakeAdminRights(string login)
-        {
-            throw new NotImplementedException();
         }
 
         private static string HashStringWithSha512(string inputString)

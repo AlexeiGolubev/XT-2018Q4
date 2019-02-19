@@ -46,6 +46,8 @@ namespace Epam.Task7.Entities
             }
         }
 
+        public byte[] Image { get; set; }
+
         public override string ToString()
         {
             return $"Id: {this.Id} Name: {this.Name} Date of birth: {this.DateOfBirth.ToShortDateString()} Age: {this.Age}";

@@ -35,6 +35,7 @@ namespace Epam.Task7.DAL
             }
 
             FileHelper.WriteUsersData(this.repoUsers);
+            FileHelper.RemoveImage(id, FileHelper.UserImagesPath);
         }
 
         public void Update(User user)
@@ -58,6 +59,22 @@ namespace Epam.Task7.DAL
         public IEnumerable<User> GetAll()
         {
             return this.repoUsers.Values;
+        }
+
+        public void AddImage(int id, byte[] image)
+        {
+            FileHelper.WriteImage(id, image, FileHelper.UserImagesPath);
+            User user = GetById(id);
+            user.Image = image;
+            Update(user);
+        }
+
+        public void RemoveImage(int id)
+        {
+            FileHelper.RemoveImage(id, FileHelper.UserImagesPath);
+            User user = GetById(id);
+            user.Image = null;
+            Update(user);
         }
     }
 }

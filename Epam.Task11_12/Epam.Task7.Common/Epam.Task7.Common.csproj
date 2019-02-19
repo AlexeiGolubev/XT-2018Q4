@@ -54,6 +54,10 @@
       <Project>{B3F65B6F-6337-461B-98FD-72768FBE0FAB}</Project>
       <Name>Epam.Task7.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Epam.Task7.DAL.DB\Epam.Task7.DAL.DB.csproj">
+      <Project>{556c8b2e-d183-40be-b394-7912ab1e7fa2}</Project>
+      <Name>Epam.Task7.DAL.DB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epam.Task7.DAL.Interface\Epam.Task7.DAL.Interface.csproj">
       <Project>{70966C9B-1FEE-46A6-81B6-4C7DC95637D9}</Project>
       <Name>Epam.Task7.DAL.Interface</Name>

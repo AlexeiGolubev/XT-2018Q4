@@ -69,5 +69,17 @@ namespace Epam.Task7.BLL
 
             return cacheResult;
         }
+
+        public void AddImage(int id, byte[] image)
+        {
+            this.cacheLogic.Delete(AllUsersCacheKey);
+            this.userDao.AddImage(id, image);
+        }
+
+        public void RemoveImage(int id)
+        {
+            this.cacheLogic.Delete(AllUsersCacheKey);
+            this.userDao.RemoveImage(id);
+        }
     }
 }

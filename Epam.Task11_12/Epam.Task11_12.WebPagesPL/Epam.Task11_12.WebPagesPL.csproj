@@ -128,6 +128,12 @@
     <Content Include="Pages\Autorization\Login.cshtml" />
     <Content Include="Pages\Autorization\Logout.cshtml" />
     <Content Include="Pages\Autorization\Registration.cshtml" />
+    <Content Include="Pages\User\AddUserImage.cshtml" />
+    <Content Include="Pages\User\DeleteUserImage.cshtml" />
+    <Content Include="Pages\Award\AddAwardImage.cshtml" />
+    <Content Include="Pages\Award\DeleteAwardImage.cshtml" />
+    <Content Include="Pages\Admin\ChangeRole.cshtml" />
+    <Content Include="Pages\Ajax\ChangeRoleAjax.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -152,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\css\" />
-    <Folder Include="Pages\Admin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

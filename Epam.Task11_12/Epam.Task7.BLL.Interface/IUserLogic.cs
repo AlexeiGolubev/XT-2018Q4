@@ -18,5 +18,9 @@ namespace Epam.Task7.BLL.Interface
         User GetById(int id);
 
         IEnumerable<User> GetAll();
+
+        void AddImage(int id, byte[] image);
+
+        void RemoveImage(int id);
     }
 }

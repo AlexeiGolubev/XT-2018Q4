@@ -3,22 +3,31 @@
     <hr />
 
     <span>Users</span>
-    <a href="/Pages/User/ShowUsers">Show users</a>
+    <a href="/Pages/User/ShowUsers">Show</a>
     @if (User.IsInRole("admin"))
     {
-        <a href="/Pages/User/AddUser">Create user</a>
-        <a href="/Pages/User/UpdateUser">Update user</a>
-        <a href="/Pages/User/RemoveUser">Remove user</a>
+        <a href="/Pages/User/AddUser">Create</a>
+        <a href="/Pages/User/UpdateUser">Update</a>
+        <a href="/Pages/User/RemoveUser">Delete</a>
+        <a href="/Pages/User/AddUserImage">Add image</a>
+        <a href="/Pages/User/DeleteUserImage">Delete image</a>
         <a href="/Pages/User/GiveAward">Give award</a>
         <a href="/Pages/User/TakeAward">Take award</a>
 
         <br /><hr />
 
         <span>Awards</span>
-        <a href="/Pages/Award/ShowAwards">Show awards</a>
-        <a href="/Pages/Award/AddAward">Create award</a>
-        <a href="/Pages/Award/UpdateAward">Update award</a>
-        <a href="/Pages/Award/RemoveAward">Remove award</a>
+        <a href="/Pages/Award/ShowAwards">Show</a>
+        <a href="/Pages/Award/AddAward">Create</a>
+        <a href="/Pages/Award/UpdateAward">Update</a>
+        <a href="/Pages/Award/RemoveAward">Delete</a>
+        <a href="/Pages/Award/AddAwardImage">Add image</a>
+        <a href="/Pages/Award/DeleteAwardImage">Delete image</a>
+
+        <br /><hr />
+
+        <span>Admin role</span>
+        <a href="/Pages/Admin/ChangeRole">Change user role</a>
 
         <br /><hr /><br />
     }

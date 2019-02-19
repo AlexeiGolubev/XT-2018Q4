@@ -12,6 +12,8 @@ namespace Epam.Task7.Entities
 
         public string Title { get; set; }
 
+        public byte[] Image { get; set; }
+
         public override string ToString()
         {
             return $"{Id}: {this.Title}";

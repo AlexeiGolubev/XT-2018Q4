@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Epam.Task7.BLL;
 using Epam.Task7.BLL.Interface;
 using Epam.Task7.DAL;
+using Epam.Task7.DAL.DB;
 using Epam.Task7.DAL.Interface;
 
 namespace Epam.Task7.Common
@@ -14,7 +15,7 @@ namespace Epam.Task7.Common
     public class DependencyResolver
     {
         private static string key = ConfigurationManager.AppSettings["UserAwardDaoKey"];
-        //private static string connectonString = ConfigurationManager.ConnectionStrings["UserAwardDB"].ConnectionString;
+        private static readonly string connectonString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
 
         private static ICacheLogic cacheLogic;
         private static IUserLogic userLogic;
@@ -47,12 +48,12 @@ namespace Epam.Task7.Common
                     {
                         case "file":
                             {
-                                userDao = new UserDao();
+                                userDao = new DAL.UserDao();
                                 break;
                             }
                         case "db":
                             {
-                                userDao = new UserDao();
+                                userDao = new DAL.DB.UserDao(connectonString);
                                 break;
                             }
 

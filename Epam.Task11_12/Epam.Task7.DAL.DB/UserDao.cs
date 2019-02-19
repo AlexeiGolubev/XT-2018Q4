@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +13,18 @@ namespace Epam.Task7.DAL.DB
         private readonly string _connectionString;
 
         #region Constructor
-        public UserDao()
+        public UserDao(string connectionString)
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
+            _connectionString = connectionString;
         }
         #endregion
 
         public void Add(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddImage(int id, byte[] image)
         {
             throw new NotImplementedException();
         }
@@ -36,6 +40,11 @@ namespace Epam.Task7.DAL.DB
         }
 
         public User GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveImage(int id)
         {
             throw new NotImplementedException();
         }

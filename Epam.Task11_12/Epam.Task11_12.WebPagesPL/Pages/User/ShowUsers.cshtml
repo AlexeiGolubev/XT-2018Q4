@@ -6,9 +6,35 @@
     var users = BLLProvider.userLogic.GetAll();
 }
 
-@*@section styles {
-    
-}*@
+@section styles {
+    <style>
+        .user_info {
+            display: inline;
+        }
+        .award_info {
+            display: inline;
+        }
+        .user_photo {
+            height: 60px;
+            width: 60px;
+        }
+        .award_photo {
+            height: 40px;
+            width: 40px;
+        }
+        img {
+            background-color: darkgray;
+            vertical-align: middle;
+            margin: 2px 2px;
+        }
+        li {
+            list-style-type: none;
+        }
+        h4 {
+            margin: 2px 2px;
+        }
+    </style>
+}
 
 <section class="content">
     <h4>Users count: @users.Count()</h4>

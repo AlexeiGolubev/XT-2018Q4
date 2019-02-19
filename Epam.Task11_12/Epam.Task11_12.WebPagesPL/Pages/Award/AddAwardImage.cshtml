@@ -1,0 +1,67 @@
+﻿@using Epam.Task11_12.WebPagesPL.CS;
+
+@{
+    if (!User.IsInRole("admin"))
+    {
+        Response.Redirect("~");
+    }
+
+    Layout = "~/_MainLayout.cshtml";
+    Page.Title = "Award image";
+
+    var messageToAdmin = string.Empty;
+    var errorMessage = "Cannot to add award image";
+
+    if (IsPost)
+    {
+        WebImage photo = WebImage.GetImageFromRequest();
+        int.TryParse(Request.Params["award_id"], out var id);
+
+        if (id > 0 && photo != null)
+        {
+            var award = BLLProvider.awardLogic.GetById(id);
+
+            if (award != null)
+            {
+                //WebHelper.WorkWithImage(photo, 60, 60);
+
+                BLLProvider.awardLogic.AddImage(award.Id, photo.GetBytes());
+
+                messageToAdmin = "Award image was added";
+            }
+            else
+            {
+                messageToAdmin = errorMessage;
+            }
+        }
+        else
+        {
+            messageToAdmin = errorMessage;
+        }
+    }
+}
+
+@*@section styles {
+    
+}*@
+
+<section class="content">
+    <div class="form">
+        <form method="post" id="form" enctype="multipart/form-data">
+
+            <div class="option">
+                <label for="award_id">Enter award ID:</label>
+                <input type="number" id="award_id" name="award_id" required />
+            </div>
+
+            <div class="option">
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/gif" />
+            </div>
+
+            <button type="submit" id="submit">Add award image</button>
+        </form>
+    </div>
+
+    <div id="result">@messageToAdmin</div>
+</section>

@@ -18,5 +18,9 @@ namespace Epam.Task7.DAL.Interface
         Award GetById(int id);
 
         IEnumerable<Award> GetAll();
+
+        void AddImage(int id, byte[] image);
+
+        void RemoveImage(int id);
     }
 }

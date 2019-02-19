@@ -15,12 +15,10 @@ namespace Epam.Task7.BLL.Interface
 
         string[] GetRoles(string login);
 
-        bool GiveAdminRights(string login);
+        bool ChangeRole(string login, string role);
 
         bool Login(string login, string password);
 
         bool Register(string email, string login, string password);
-
-        bool TakeAdminRights(string login);
     }
 }

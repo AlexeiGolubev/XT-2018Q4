@@ -35,6 +35,7 @@ namespace Epam.Task7.DAL
             }
 
             FileHelper.WriteAwardsData(this.repoAwards);
+            FileHelper.RemoveImage(id, FileHelper.AwardImagesPath);
         }
 
         public void Update(Award award)
@@ -58,6 +59,22 @@ namespace Epam.Task7.DAL
         public IEnumerable<Award> GetAll()
         {
             return this.repoAwards.Values;
+        }
+
+        public void AddImage(int id, byte[] image)
+        {
+            FileHelper.WriteImage(id, image, FileHelper.AwardImagesPath);
+            Award award = GetById(id);
+            award.Image = image;
+            Update(award);
+        }
+
+        public void RemoveImage(int id)
+        {
+            FileHelper.RemoveImage(id, FileHelper.AwardImagesPath);
+            Award award = GetById(id);
+            award.Image = null;
+            Update(award);
         }
     }
 }
