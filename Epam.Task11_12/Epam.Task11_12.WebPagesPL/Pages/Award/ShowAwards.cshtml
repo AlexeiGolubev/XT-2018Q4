@@ -11,9 +11,32 @@
     var awards = BLLProvider.awardLogic.GetAll();
 }
 
-@*@section styles {
-    
-}*@
+@section styles {
+    <style>
+        .award_info {
+            display: inline;
+        }
+
+        .award_photo {
+            height: 40px;
+            width: 40px;
+        }
+
+        img {
+            background-color: darkgray;
+            vertical-align: middle;
+            margin: 2px 2px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        h4 {
+            margin: 2px 2px;
+        }
+    </style>
+}
 
 <section class="content">
     <h4>Awards count: @awards.Count()</h4>
@@ -23,7 +46,7 @@
         {
             <li>
                 <img src="@WebHelper.GetAwardImagePath(award)" class="award_photo" alt="award photo" />
-                <div class="user_info">
+                <div class="award_info">
                     @award.ToString()
                 </div>
             </li>

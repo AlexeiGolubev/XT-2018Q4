@@ -10,18 +10,18 @@ using Epam.Task7.Entities;
 
 namespace Epam.Task7.DAL.DB
 {
-    public class UserDao : IUserDao
+    public class AwardDao : IAwardDao
     {
         private readonly string _connectionString;
 
         #region Constructor
-        public UserDao(string connectionString)
+        public AwardDao(string connectionString)
         {
             _connectionString = connectionString;
         }
         #endregion
 
-        public void Add(User user)
+        public void Add(Award award)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -29,12 +29,10 @@ namespace Epam.Task7.DAL.DB
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "AddUser";
+                    command.CommandText = "AddAward";
 
-                    var name = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = user.Name };
-                    command.Parameters.Add(name);
-                    var dateOfBirth = new SqlParameter("@DateOfBirth", SqlDbType.Date) { Value = user.DateOfBirth };
-                    command.Parameters.Add(dateOfBirth);
+                    var title = new SqlParameter("@Title", SqlDbType.NVarChar) { Value = award.Title };
+                    command.Parameters.Add(title);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -55,12 +53,12 @@ namespace Epam.Task7.DAL.DB
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "AddUserImage";
+                    command.CommandText = "AddAwardImage";
 
-                    var idUser = new SqlParameter("@Id_User", SqlDbType.Int) { Value = id };
-                    command.Parameters.Add(idUser);
-                    var imageUser = new SqlParameter("@Image", SqlDbType.VarBinary) { Value = image };
-                    command.Parameters.Add(imageUser);
+                    var idAward = new SqlParameter("@Id_Award", SqlDbType.Int) { Value = id };
+                    command.Parameters.Add(idAward);
+                    var imageAward = new SqlParameter("@Image", SqlDbType.VarBinary) { Value = image };
+                    command.Parameters.Add(imageAward);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -81,10 +79,10 @@ namespace Epam.Task7.DAL.DB
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "DeleteUserById";
+                    command.CommandText = "DeleteAwardById";
 
-                    var idUser = new SqlParameter("@Id_User", SqlDbType.Int) { Value = id };
-                    command.Parameters.Add(idUser);
+                    var idAward = new SqlParameter("@Id_Award", SqlDbType.Int) { Value = id };
+                    command.Parameters.Add(idAward);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -97,27 +95,26 @@ namespace Epam.Task7.DAL.DB
             }
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Award> GetAll()
         {
-            var repoUsers = new List<User>();
+            var repoAwards = new List<Award>();
             using (var connection = new SqlConnection(_connectionString))
             {
                 try
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "GetAllUsers";
+                    command.CommandText = "GetAllAwards";
 
                     connection.Open();
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        repoUsers.Add(
-                            new User
+                        repoAwards.Add(
+                            new Award
                             {
-                                Id = (int)reader["Id_User"],
-                                Name = (string)reader["Name"],
-                                DateOfBirth = ((DateTime)reader["DateOfBirth"]),
+                                Id = (int)reader["Id_Award"],
+                                Title = (string)reader["Title"],
                                 Image = reader["Image"] == DBNull.Value
                                 ? null
                                 : (byte[])reader["Image"],
@@ -131,36 +128,35 @@ namespace Epam.Task7.DAL.DB
                 }
             }
 
-            return repoUsers;
+            return repoAwards;
         }
 
-        public User GetById(int id)
+        public Award GetById(int id)
         {
-            var user = new User();
+            var award = new Award();
             using (var connection = new SqlConnection(_connectionString))
             {
                 try
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "GetUserById";
+                    command.CommandText = "GetAwardById";
 
-                    var idUser = new SqlParameter("@Id_User", SqlDbType.Int) { Value = id };
-                    command.Parameters.Add(idUser);
+                    var idAward = new SqlParameter("@Id_Award", SqlDbType.Int) { Value = id };
+                    command.Parameters.Add(idAward);
 
                     connection.Open();
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                            user = new User
-                            {
-                                Id = (int)reader["Id_User"],
-                                Name = (string)reader["Name"],
-                                DateOfBirth = ((DateTime)reader["DateOfBirth"]),
-                                Image = reader["Image"] == DBNull.Value
-                                ? null
-                                : (byte[])reader["Image"],
-                            };
+                        award = new Award
+                        {
+                            Id = (int)reader["Id_Award"],
+                            Title = (string)reader["Title"],
+                            Image = reader["Image"] == DBNull.Value
+                            ? null
+                            : (byte[])reader["Image"],
+                        };
                     }
                 }
                 finally
@@ -170,7 +166,7 @@ namespace Epam.Task7.DAL.DB
                 }
             }
 
-            return user;
+            return award;
         }
 
         public void RemoveImage(int id)
@@ -181,10 +177,10 @@ namespace Epam.Task7.DAL.DB
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "DeleteUserImage";
+                    command.CommandText = "DeleteAwardImage";
 
-                    var idUser = new SqlParameter("@Id_User", SqlDbType.Int) { Value = id };
-                    command.Parameters.Add(idUser);
+                    var idAward = new SqlParameter("@Id_Award", SqlDbType.Int) { Value = id };
+                    command.Parameters.Add(idAward);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -197,7 +193,7 @@ namespace Epam.Task7.DAL.DB
             }
         }
 
-        public void Update(User user)
+        public void Update(Award award)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -205,14 +201,12 @@ namespace Epam.Task7.DAL.DB
                 {
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "UpdateUser";
+                    command.CommandText = "UpdateAward";
 
-                    var id = new SqlParameter("@Id_User", SqlDbType.Int) { Value = user.Id };
+                    var id = new SqlParameter("@Id_Award", SqlDbType.Int) { Value = award.Id };
                     command.Parameters.Add(id);
-                    var name = new SqlParameter("@Name", SqlDbType.NVarChar) { Value = user.Name };
-                    command.Parameters.Add(name);
-                    var dateOfBirth = new SqlParameter("@DateOfBirth", SqlDbType.Date) { Value = user.DateOfBirth };
-                    command.Parameters.Add(dateOfBirth);
+                    var title = new SqlParameter("@Title", SqlDbType.NVarChar) { Value = award.Title };
+                    command.Parameters.Add(title);
 
                     connection.Open();
                     command.ExecuteNonQuery();

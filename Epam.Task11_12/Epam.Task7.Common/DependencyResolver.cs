@@ -16,7 +16,7 @@ namespace Epam.Task7.Common
     {
         private static string key = ConfigurationManager.AppSettings["UserAwardDaoKey"];
         private static readonly string connectonString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
-
+        
         private static ICacheLogic cacheLogic;
         private static IUserLogic userLogic;
         private static IAwardLogic awardLogic;
@@ -76,12 +76,12 @@ namespace Epam.Task7.Common
                     {
                         case "file":
                             {
-                                awardDao = new AwardDao();
+                                awardDao = new DAL.AwardDao();
                                 break;
                             }
                         case "db":
                             {
-                                awardDao = new AwardDao();
+                                awardDao = new DAL.DB.AwardDao(connectonString);
                                 break;
                             }
 
@@ -104,12 +104,12 @@ namespace Epam.Task7.Common
                     {
                         case "file":
                             {
-                                awardedUsersDao = new AwardedUsersDao();
+                                awardedUsersDao = new DAL.AwardedUsersDao();
                                 break;
                             }
                         case "db":
                             {
-                                awardedUsersDao = new AwardedUsersDao();
+                                awardedUsersDao = new DAL.DB.AwardedUsersDao(connectonString);
                                 break;
                             }
 

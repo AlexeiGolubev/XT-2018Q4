@@ -7,9 +7,14 @@
 }*@
 
 <div id="admin_data">
-    <hr /><br />
-    <h2>You can log in like admin</h2>
-    <h2>login: admin</h2>
-    <h2>password: admin</h2>
-    <br />
+    @{
+        if (!User.IsInRole("admin"))
+        {
+            <hr /><br />
+            <h2>You can log in like admin</h2>
+            <h2>login: admin</h2>
+            <h2>password: admin</h2>
+            <br />
+        }
+    }
 </div>

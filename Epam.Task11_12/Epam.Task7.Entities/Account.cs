@@ -17,7 +17,7 @@ namespace Epam.Task7.Entities
             this.Role = role;
         }
 
-        private Account()
+        public Account()
         {
         }
 
